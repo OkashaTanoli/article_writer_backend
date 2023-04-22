@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken')
 
 
 const SignUpUser = async (req, res) => {
-    // console.log(req.body)
+    //  console.log(req.body)
     const checkuser = await User.find({ email: req.body.email })
     if (checkuser.length) {
         return res.status(409).json({ message: "User Already Exists", status: false })
