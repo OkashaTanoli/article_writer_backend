@@ -22,6 +22,7 @@ const CreateArticle = async (req, res) => {
         //     max_tokens: 7,
         // });
         // const data = await response.json()
+        const length = req.body.length === 'small' ? 500 : req.body.length === 'medium' ? 1000 : req.body.length === 'large' ? 2000 : 1000
         const response = await fetch('https://api.openai.com/v1/completions', {
             method: 'POST',
             headers: {
@@ -31,12 +32,12 @@ const CreateArticle = async (req, res) => {
             body: JSON.stringify({
                 model: 'text-davinci-003',
                 prompt: req.body.prompt,
-                max_tokens: 400,
-                n: 2
+                max_tokens: length,
+                n: req.body.number
             })
         })
         const data = await response.json()
-        console.log(data)
+        // console.log(data)
         if (data.error) {
             return res.json({ status: 'error', error: data.error })
         }

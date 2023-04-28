@@ -50,7 +50,7 @@ const GetArticles = async (req, res) => {
 
 
 const EditArticle = async (req, res) => {
-    const { email, userId } = req.userData
+    const { email } = req.userData
     const user = await User.findOne({ email: email })
     if (!user) {
         return res.status(401).json({
