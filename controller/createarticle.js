@@ -36,7 +36,6 @@ const CreateArticle = async (req, res) => {
     catch (err) {
         res.json({ status: 'error', error: { message: 'Internal serever error' } })
     }
-
 }
 
 module.exports = {
