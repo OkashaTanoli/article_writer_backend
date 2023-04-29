@@ -2,6 +2,10 @@ const User = require("../model/user")
 const { Configuration, OpenAIApi } = require("openai");
 
 const CreateArticle = async (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); // If needed
+    res.setHeader('Access-Control-Allow-Credentials', true); // If needed
     const { email } = req.userData
     const user = await User.findOne({ email: email })
     if (!user) {
@@ -41,6 +45,7 @@ const CreateArticle = async (req, res) => {
         if (data.error) {
             return res.json({ status: 'error', error: data.error })
         }
+
         res.json({ status: 'ok', data })
     }
     catch (err) {
