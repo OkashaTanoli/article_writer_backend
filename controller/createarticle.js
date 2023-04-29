@@ -2,10 +2,6 @@ const User = require("../model/user")
 const { Configuration, OpenAIApi } = require("openai");
 
 const CreateArticle = async (req, res) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); // If needed
-    res.setHeader('Access-Control-Allow-Credentials', true); // If needed
     const { email } = req.userData
     const user = await User.findOne({ email: email })
     if (!user) {
@@ -15,17 +11,6 @@ const CreateArticle = async (req, res) => {
         })
     }
     try {
-        // const configuration = new Configuration({
-        //     apiKey: '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'
-        // });
-        // const openai = new OpenAIApi(configuration);
-        // const response = await openai.createCompletion({
-        //     model: "text-davinci-003",
-        //     prompt: req.body.prompt,
-        //     temperature: 0,
-        //     max_tokens: 7,
-        // });
-        // const data = await response.json()
         const length = req.body.length === 'small' ? 500 : req.body.length === 'medium' ? 2000 : req.body.length === 'very large' ? 3800 : 2000
         const response = await fetch('https://api.openai.com/v1/completions', {
             method: 'POST',

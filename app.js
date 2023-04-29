@@ -9,10 +9,7 @@ const articleshistory = require('./routes/articlesHistory.js')
 const app = express()
 const PORT = process.env.PORT || 5000
 
-app.use(cors({
-    origin: '*'
-}));
-
+app.use(cors());
 app.use(express.json())
 
 app.use("/api/v1/user", user)
@@ -21,7 +18,7 @@ app.use("/api/v1/articleshistory", articleshistory)
 
 
 app.get('/', (req, res) => {
-    res.send({ message: 'welcome to API!!!!' })
+    res.send({ message: 'welcome to API!!!' })
 })
 
 
