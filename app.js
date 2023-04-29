@@ -21,7 +21,7 @@ app.use("/api/v1/articleshistory", articleshistory)
 
 
 app.get('/', (req, res) => {
-    res.send({ message: 'welcome to API!!' })
+    res.send({ message: 'welcome to API!!!!' })
 })
 
 
