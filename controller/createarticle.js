@@ -11,7 +11,7 @@ const CreateArticle = async (req, res) => {
         })
     }
     try {
-        const length = req.body.length === 'small' ? 500 : req.body.length === 'medium' ? 2000 : req.body.length === 'very large' ? 3800 : 2000
+        const length = req.body.length === 'small' ? 500 : req.body.length === 'medium' ? 1000 : req.body.length === 'very large' ? 2000 : 2000
         const response = await fetch('https://api.openai.com/v1/completions', {
             method: 'POST',
             headers: {
