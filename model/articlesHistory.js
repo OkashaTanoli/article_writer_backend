@@ -15,6 +15,10 @@ const Articles = new mongoose.Schema({
             article: {
                 type: String,
                 required: [true, "Article is required"],
+            },
+            title: {
+                type: String,
+                required: [true, "Title is required"],
             }
         }
     ]

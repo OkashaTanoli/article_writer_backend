@@ -15,7 +15,8 @@ const AddArticle = async (req, res) => {
             creator: userId,
             articles: req.body.articles.map((val) => {
                 return {
-                    article: val
+                    title: val.title,
+                    article: val.text
                 }
             })
         })
